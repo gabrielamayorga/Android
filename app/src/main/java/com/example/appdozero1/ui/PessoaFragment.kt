@@ -1,6 +1,5 @@
 package com.example.appdozero1.ui
 
-import androidx.lifecycle.ViewModelProviders
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +10,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.observe
 import androidx.navigation.fragment.findNavController
 import com.example.appdozero1.R
-import com.example.appdozero1.R.id.btnSalvar
+import com.example.appdozero1.R.id.frameLayout
 import com.example.appdozero1.model.Pessoa
 import kotlinx.android.synthetic.main.pessoa_fragment.*
 
@@ -26,7 +25,7 @@ class PessoaFragment : Fragment() {
         var view = inflater.inflate(R.layout.pessoa_fragment, container, false)
         viewModel = ViewModelProvider(this).get(PessoaViewModel::class.java)
 
-        viewModel.pessoa.observe(viewLifecycleOwner,{ pessoa ->
+        viewModel.pessoa.observe(viewLifecycleOwner) { pessoa ->
             txtNome.setText(pessoa.nome)
             txtCpf.setText(pessoa.cpf)
             txtAltura.setText(pessoa.altura.toString())
@@ -40,7 +39,7 @@ class PessoaFragment : Fragment() {
 
                 findNavController().navigateUp()
             }
-        })
+        }
         return view
     }
 

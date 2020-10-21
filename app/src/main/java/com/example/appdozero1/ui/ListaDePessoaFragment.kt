@@ -36,22 +36,10 @@ class ListaDePessoaFragment : Fragment() {
         var viewModel = ViewModelProvider(requireActivity()).get(PessoaViewModel::class.java)
 
         viewModel.listaDePessoas.observe(requireActivity(), { pessoas ->
-            with(recycler){
-                adapter = PessoaAdapter(pessoas)
+            with(recycler) {
+                adapter = PessoaAdapter(requireActivity(), viewModel, pessoas)
             }
         })
-
-
-        // Set the adapter
-      /*  if (view is RecyclerView) {
-            with(view) {
-             *//*   layoutManager = when {
-                    columnCount <= 1 -> LinearLayoutManager(context)
-                    else -> GridLayoutManager(context, columnCount)
-                }*//*
-                *//*adapter = PessoaAdapter(DummyContent.ITEMS)*//*
-            }
-        }*/
 
         view.findViewById<FloatingActionButton>(R.id.fab).setOnClickListener{
             viewModel.pessoa.value = Pessoa()
