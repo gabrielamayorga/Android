@@ -22,13 +22,46 @@ class PessoaFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        var view = inflater.inflate(R.layout.pessoa_fragment, container, false)
-        viewModel = ViewModelProvider(this).get(PessoaViewModel::class.java)
 
-        viewModel.pessoa.observe(viewLifecycleOwner) { pessoa ->
+        var view = inflater.inflate(R.layout.pessoa_fragment, container, false)
+        viewModel = ViewModelProvider(requireActivity()).get(PessoaViewModel::class.java)
+
+        viewModel.pessoa.observe(viewLifecycleOwner, { pessoa ->
+
             txtNome.setText(pessoa.nome)
             txtCpf.setText(pessoa.cpf)
             txtAltura.setText(pessoa.altura.toString())
+
+            view.findViewById<Button>(R.id.btnSalvar).setOnClickListener {
+                val nome = txtNome.text.toString()
+                val cpf = txtCpf.text.toString()
+                val altura = txtAltura.text.toString().toDouble()
+
+                viewModel.salvarPessoa(Pessoa(id = pessoa.id, nome = nome, cpf = cpf, altura = altura))
+                findNavController().navigateUp()
+            }
+
+        })
+        return view
+    }
+
+    /*   private lateinit var viewModel: PessoaViewModel
+
+       override fun onCreateView(
+           inflater: LayoutInflater, container: ViewGroup?,
+           savedInstanceState: Bundle?
+       ): View? {
+           var view = inflater.inflate(R.layout.pessoa_fragment, container, false)
+          *//* viewModel = ViewModelProvider(this).get(PessoaViewModel::class.java)*//*
+        viewModel = ViewModelProvider(requireActivity()).get(PessoaViewModel::class.java)
+
+       *//* view.findViewById<Button>(R.id.btnSalvar).setOnClickListener{ findNavController().navigateUp()}*//*
+
+        viewModel.pessoa.observe(viewLifecycleOwner, { pessoa ->
+            txtNome.setText(pessoa.nome)
+            txtCpf.setText(pessoa.cpf)
+            txtAltura.setText(pessoa.altura.toString())
+        })
 
             view.findViewById<Button>(R.id.btnSalvar).setOnClickListener{
                 val nome = txtNome.text.toString()
@@ -39,8 +72,8 @@ class PessoaFragment : Fragment() {
 
                 findNavController().navigateUp()
             }
-        }
+
         return view
-    }
+    }*/
 
 }

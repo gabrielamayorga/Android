@@ -29,20 +29,9 @@ android {
         viewBinding true
     }
 
-    // Configure only for each module that uses Java 8
-    // language features (either in its source code or
-    // through dependencies).
-
-  /*  android {
-        compileOptions {
-            sourceCompatibility = JavaVersion.VERSION_1_8
-            targetCompatibility = JavaVersion.VERSION_1_8
-        }
-        kotlinOptions {
-            jvmTarget = JavaVersion.VERSION_1_8
-        }
-    }*/
-
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {
