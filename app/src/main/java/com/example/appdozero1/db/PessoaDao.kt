@@ -7,6 +7,7 @@ import androidx.room.Query
 import androidx.room.Update
 import com.example.appdozero1.model.Pessoa
 
+/*
 @Dao
 interface PessoaDao {
     @Query("SELECT * FROM pessoas")
@@ -23,4 +24,4 @@ interface PessoaDao {
 
     @Query("DELETE FROM pessoas")
     suspend fun apagarTodos()
-}
+}*/

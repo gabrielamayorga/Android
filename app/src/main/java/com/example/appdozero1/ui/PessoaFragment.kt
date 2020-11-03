@@ -31,13 +31,17 @@ class PessoaFragment : Fragment() {
             txtNome.setText(pessoa.nome)
             txtCpf.setText(pessoa.cpf)
             txtAltura.setText(pessoa.altura.toString())
+            txtFoto.setText(pessoa.foto)
 
             view.findViewById<Button>(R.id.btnSalvar).setOnClickListener {
-                val nome = txtNome.text.toString()
-                val cpf = txtCpf.text.toString()
-                val altura = txtAltura.text.toString().toDouble()
-
-                viewModel.salvarPessoa(Pessoa(id = pessoa.id, nome = nome, cpf = cpf, altura = altura))
+                var pessoa = Pessoa(
+                    docId = pessoa.docId,
+                    nome = txtNome.text.toString(),
+                    cpf = txtCpf.text.toString(),
+                    foto = txtFoto.text.toString(),
+                    altura = txtAltura.text.toString().toInt()
+                )
+                viewModel.repository.salvarPessoa(pessoa)
                 findNavController().navigateUp()
             }
 

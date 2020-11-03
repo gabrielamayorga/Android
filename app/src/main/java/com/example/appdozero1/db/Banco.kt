@@ -6,6 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.appdozero1.model.Pessoa
 
+/*
 @Database(entities = [Pessoa::class], version = 1, exportSchema = false)
 abstract class Banco : RoomDatabase(){
 
@@ -27,4 +28,4 @@ abstract class Banco : RoomDatabase(){
             return instance!!
         }
     }
-}
+}*/
